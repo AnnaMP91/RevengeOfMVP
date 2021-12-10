@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import DogResult from './DogResult.jsx';
 
 class QuizForm extends React.Component {
   constructor(props) {
@@ -10,10 +11,12 @@ class QuizForm extends React.Component {
       activity: '',
       job: '',
       experience: '',
-      dogMatch: []
+      dogMatch: [],
+      dogFound: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.submitQuiz = this.submitQuiz.bind(this);
+    this.updateDogMatch = this.updateDogMatch.bind(this);
   }
 
   handleChange(event) {
@@ -36,85 +39,97 @@ class QuizForm extends React.Component {
         experience: this.state.experience
       }
     })
-      .then(function (response) {
-        console.log('quiz submitted successfully: ', response.data);
+      .then((response) => {
+        console.log('success getting dog');
         this.setState({
-          dogMatch: response.data
+          dogMatch: response.data,
+          dogFound: true
         })
       })
-      .catch(function (error) {
-        console.log('error submitting quiz: ', error);
-      });
+      .catch((error) => {
+        console.log('error getting dog');
+      })
+  }
+
+  updateDogMatch(data) {
+    this.setState({
+      dogMatch: data
+    })
   }
 
   render() {
     return (
       <div>
-        <p>What size is your home?</p>
 
-        <div>
-          <input type="radio" id="homeSize" name="homeSize" value="lapdog" onChange={this.handleChange} />
-          <label htmlFor="homeSize">zillow almost can't legally call it a residence</label>
+        {this.state.dogFound ? <DogResult dogResult={this.state.dogMatch} /> :
+          <div>
+            <p>What size is your home?</p>
 
-          <input type="radio" id="homeSize" name="homeSize" value="30" onChange={this.handleChange} />
-          <label htmlFor="homeSize">It's cozy but plenty</label>
+            <div>
+              <input type="radio" id="homeSize" name="homeSize" value="lapdog" onChange={this.handleChange} />
+              <label htmlFor="homeSize">zillow almost can't legally call it a residence</label>
 
-          <input type="radio" id="homeSize" name="homeSize" value="90" onChange={this.handleChange} />
-          <label htmlFor="homeSize">Is there someone living in my 8th bedroom?</label>
-        </div>
+              <input type="radio" id="homeSize" name="homeSize" value="30" onChange={this.handleChange} />
+              <label htmlFor="homeSize">It's cozy but plenty</label>
 
-        <p>Do you have small children?</p>
+              <input type="radio" id="homeSize" name="homeSize" value="90" onChange={this.handleChange} />
+              <label htmlFor="homeSize">Is there someone living in my 8th bedroom?</label>
+            </div>
 
-        <div>
-          <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
-          <label htmlFor="children">There are tiny people underfoot</label>
+            <p>Do you have small children?</p>
 
-          <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
-          <label htmlFor="children">Only furry ones</label>
+            <div>
+              <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
+              <label htmlFor="children">There are tiny people underfoot</label>
 
-          <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
-          <label htmlFor="children">I have children of the bipedal and four legged varieties</label>
+              <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
+              <label htmlFor="children">Only furry ones</label>
 
-          <input type="radio" id="children" name="children" value="companion" onChange={this.handleChange} />
-          <label htmlFor="children">I am alone</label>
-        </div>
+              <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
+              <label htmlFor="children">I have children of the bipedal and four legged varieties</label>
 
-        <p>Describe your activity level</p>
+              <input type="radio" id="children" name="children" value="companion" onChange={this.handleChange} />
+              <label htmlFor="children">I am alone</label>
+            </div>
 
-        <div>
-          <input type="radio" id="activity" name="activity" value="lapdog" onChange={this.handleChange} />
-          <label htmlFor="activity">My couch and I are no longer seperate beings</label>
+            <p>Describe your activity level</p>
 
-          <input type="radio" id="activity" name="activity" value="lapdog" onChange={this.handleChange} />
-          <label htmlFor="activity">I try to touch grass on the weekends</label>
+            <div>
+              <input type="radio" id="activity" name="activity" value="lapdog" onChange={this.handleChange} />
+              <label htmlFor="activity">My couch and I are no longer seperate beings</label>
 
-          <input type="radio" id="activity" name="activity" value="herding" onChange={this.handleChange} />
-          <label htmlFor="activity">Kind of like the floor is lava but if you sit down you perish</label>
-        </div>
+              <input type="radio" id="activity" name="activity" value="lapdog" onChange={this.handleChange} />
+              <label htmlFor="activity">I try to touch grass on the weekends</label>
 
-        <p>Do you want a dog that can do a job?</p>
+              <input type="radio" id="activity" name="activity" value="herding" onChange={this.handleChange} />
+              <label htmlFor="activity">Kind of like the floor is lava but if you sit down you perish</label>
+            </div>
 
-        <div>
-          <input type="radio" id="job" name="job" value="lapdog" onChange={this.handleChange} />
-          <label htmlFor="job">I don't want to work so I shouldn't expect my dog to</label>
+            <p>Do you want a dog that can do a job?</p>
 
-          <input type="radio" id="job" name="job" value="herding" onChange={this.handleChange} />
-          <label htmlFor="job">My dog is going to pay my bills</label>
-        </div>
+            <div>
+              <input type="radio" id="job" name="job" value="lapdog" onChange={this.handleChange} />
+              <label htmlFor="job">I don't want to work so I shouldn't expect my dog to</label>
 
-        <p>Have you ever had a dog?</p>
+              <input type="radio" id="job" name="job" value="herding" onChange={this.handleChange} />
+              <label htmlFor="job">My dog is going to pay my bills</label>
+            </div>
 
-        <div>
-          <input type="radio" id="experience" name="experience" value="trainable" onChange={this.handleChange} />
-          <label htmlFor="experience">This is my first dog</label>
+            <p>Have you ever had a dog?</p>
 
-          <input type="radio" id="experience" name="experience" value="trainable" onChange={this.handleChange} />
-          <label htmlFor="experience">I have had one/a handful of dogs</label>
+            <div>
+              <input type="radio" id="experience" name="experience" value="trainable" onChange={this.handleChange} />
+              <label htmlFor="experience">This is my first dog</label>
 
-          <input type="radio" id="experience" name="experience" value="stubborn" onChange={this.handleChange} />
-          <label htmlFor="experience">I have never existed without a dog</label>
-        </div>
-        <button onClick={this.submitQuiz} >Show me my dog!</button>
+              <input type="radio" id="experience" name="experience" value="trainable" onChange={this.handleChange} />
+              <label htmlFor="experience">I have had one/a handful of dogs</label>
+
+              <input type="radio" id="experience" name="experience" value="stubborn" onChange={this.handleChange} />
+              <label htmlFor="experience">I have never existed without a dog</label>
+            </div>
+            <button onClick={this.submitQuiz} >Show me my dog!</button>
+          </div>
+        }
       </div>
     )
   }
