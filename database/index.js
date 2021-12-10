@@ -50,13 +50,22 @@ let addDogs = (dogsArray) => {
   })
 }
 
-let findMyDogs = (characteristics) => {
+let gimmeMyDog = (characteristics) => {
   return new Promise((resolve, reject) => {
-
+    console.log('characteristics for db search: ', characteristics);
+    Dog.find({ "bred_for": "Lapdog" })
+      .then((dogs) => {
+        //console.log('these are the matching dogs: ', dogs)
+        resolve(dogs);
+      })
+      .catch((error) => {
+        console.log('error matching a dog: ', error);
+        reject(error);
+      })
 
   })
 }
 
 module.exports.addDogs = addDogs;
-module.exports.findMyDogs = findMyDogs;
+module.exports.gimmeMyDog = gimmeMyDog;
 
