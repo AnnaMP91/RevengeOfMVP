@@ -16,20 +16,7 @@ app.use(bodyParser.json())
 
 app.get('/gimmeMyDog', (req, res) => {
   console.log('quiz incoming: ', req.query)
-  axios.get('https://api.thedogapi.com/v1/breeds', {
-    headers: {
-      "x-api-key": process.env.API_TOKEN
-    }
-  })
-    .then((dogs) => {
-      console.log('success getting dogs from API: ', dogs);
-      res.send('Hello World');
 
-    })
-    .catch((error) => {
-      console.log('error getting dogs from API: ', error);
-      res.send(error);
-    })
 })
 
 

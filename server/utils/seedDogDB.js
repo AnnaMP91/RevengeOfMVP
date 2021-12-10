@@ -9,12 +9,13 @@ axios.get('https://api.thedogapi.com/v1/breeds', {
 })
   .then((response) => {
     //console.log('success getting dogs: ', response.data);
-    for (var i = 0; i < response.data.length; i++) {
-      let dogData = response.data[i]
-      //console.log('this is the dogdata: ', dogData);
-      db.addDogs(dogData);
-    }
+    // for (var i = 0; i < 10; i++) {
+    //   let dogData = response.data[i];
+    //   //console.log('this is the dogdata: ', dogData);
+    //   db.addDogs(dogData);
+    // }
+    db.addDogs(response.data);
   })
   .catch((error) => {
-    console.log('error getting dogs: ', error);
+    console.log('error getting dogs');
   })
