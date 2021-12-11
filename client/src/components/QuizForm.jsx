@@ -64,12 +64,12 @@ class QuizForm extends React.Component {
 
   render() {
     return (
-      <Form className="col-md-8 mx-auto">
+      <Form className="col-md-8 mx-auto text-center">
 
 
         {this.state.dogFound ? <DogResult dogResult={this.state.dogMatch} /> :
           <>
-            <Form.Group className="mb-3 border">
+            <Form.Group className="mb-3 border border-3 rounded-1">
               <Form.Label className="fw-bold">What size is your home?</Form.Label>
               <div key="inline-radio" className="mb-3">
                 <Form.Check
@@ -99,7 +99,7 @@ class QuizForm extends React.Component {
               </div>
             </Form.Group>
 
-            <Form.Group className="mb-3 border">
+            <Form.Group className="mb-3 border border-3 rounded-1">
               <Form.Label className="fw-bold" >Do you have small children?</Form.Label>
               <div key="inline-radio" className="mb-3">
                 <Form.Check
@@ -138,7 +138,7 @@ class QuizForm extends React.Component {
               </div>
             </Form.Group>
 
-            <Form.Group className="mb-3 border">
+            <Form.Group className="mb-3 border border-3 rounded-1">
               <Form.Label className="fw-bold">Describe your activity level</Form.Label>
               <div key="inline-radio" className="mb-3">
                 <Form.Check
@@ -168,7 +168,7 @@ class QuizForm extends React.Component {
               </div>
             </Form.Group>
 
-            <Form.Group className="mb-3 border">
+            <Form.Group className="mb-3 border border-3 rounded-1">
               <Form.Label className="fw-bold">What life stage suits you?</Form.Label>
               <div key="inline-radio" className="mb-3">
                 <Form.Check
@@ -206,7 +206,7 @@ class QuizForm extends React.Component {
               </div>
             </Form.Group>
 
-            <Form.Group className="mb-3 border">
+            <Form.Group className="mb-3 border border-3 rounded-1">
               <Form.Label className="fw-bold">Have you ever had a dog?</Form.Label>
               <div key="inline-radio" className="mb-3">
                 <Form.Check
