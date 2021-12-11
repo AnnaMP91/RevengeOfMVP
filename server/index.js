@@ -71,9 +71,9 @@ app.get('/gimmeMyDog', (req, res) => {
       console.log('dogs in my area: ', response.data.animals);
       let dogs = response.data.animals;
       for (var i = 0; i < dogs.length; i++) {
-        if (req.query.activity === 'active' && (dogs[i].tags.includes('Playful') || dogs[i].tags.includes('Active'))) {
+        if (req.query.activity === 'active' && (dogs[i].tags.includes('Playful') || dogs[i].tags.includes('Athletic'))) {
           myDogMatches.push(dogs[i]);
-        } else if (req.query.activity === 'inactive' && (!dogs[i].tags.includes('Playful') || !dogs[i].tags.includes('Active'))) {
+        } else if (req.query.activity === 'inactive' && (!dogs[i].tags.includes('Athletic'))) {
           myDogMatches.push(dogs[i]);
         }
       }
