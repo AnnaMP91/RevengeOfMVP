@@ -1,5 +1,7 @@
 import React from 'react';
 import QuizForm from './QuizForm.jsx';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,19 +20,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-
-
-        {this.state.quizButtonClicked ? <QuizForm /> :
+      this.state.quizButtonClicked ? <QuizForm /> :
+        <Card style={{ width: '500px' }} className="text-center mx-auto">
           <div>
+            <h1>Houndr</h1>
             <div>Are you in the market for a furry friend? Are you struggling to determine
             what kind of dog will best suit your lifestyle? We can help! Take the quiz below and we
-            will choose one for you!
+            will find your match!
         </div>
-            <button onClick={this.swapButtonVal}>Start Quiz!</button>
-          </div>}
-
-      </div>
+            <Button variant="primary" onClick={this.swapButtonVal}>Start Quiz!</Button>
+          </div>
+        </Card>
     )
   }
 }
