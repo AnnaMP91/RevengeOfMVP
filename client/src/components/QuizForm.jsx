@@ -13,8 +13,8 @@ class QuizForm extends React.Component {
       homeSize: '',
       children: '',
       activity: '',
-      job: '',
       experience: '',
+      age: '',
       dogMatch: [],
       dogFound: false
     }
@@ -39,7 +39,7 @@ class QuizForm extends React.Component {
         homeSize: this.state.homeSize,
         children: this.state.children,
         activity: this.state.activity,
-        job: this.state.job,
+        age: this.state.age,
         experience: this.state.experience
       }
     })
@@ -72,13 +72,13 @@ class QuizForm extends React.Component {
             <p>What size is your home?</p>
 
             <Stack direction="horizontal" gap={3}>
-              <input type="radio" id="homeSize" name="homeSize" value="lapdog" onChange={this.handleChange} />
+              <input type="radio" id="homeSize" name="homeSize" value="small" onChange={this.handleChange} />
               <label htmlFor="homeSize">zillow almost can't legally call it a residence</label>
 
-              <input type="radio" id="homeSize" name="homeSize" value="30" onChange={this.handleChange} />
+              <input type="radio" id="homeSize" name="homeSize" value="medium" onChange={this.handleChange} />
               <label htmlFor="homeSize">It's cozy but plenty</label>
 
-              <input type="radio" id="homeSize" name="homeSize" value="90" onChange={this.handleChange} />
+              <input type="radio" id="homeSize" name="homeSize" value="large" onChange={this.handleChange} />
               <label htmlFor="homeSize">Is there someone living in my 8th bedroom?</label>
             </Stack>
 
@@ -86,16 +86,16 @@ class QuizForm extends React.Component {
             <p>Do you have small children?</p>
 
             <Stack direction="horizontal" gap={2}>
-              <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
+              <input type="radio" id="children" name="children" value="children" onChange={this.handleChange} />
               <label htmlFor="children">There are tiny people underfoot</label>
 
-              <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
+              <input type="radio" id="children" name="children" value="pets" onChange={this.handleChange} />
               <label htmlFor="children">Only furry ones</label>
 
-              <input type="radio" id="children" name="children" value="family" onChange={this.handleChange} />
+              <input type="radio" id="children" name="children" value="both" onChange={this.handleChange} />
               <label htmlFor="children">I have children of the bipedal and four legged varieties</label>
 
-              <input type="radio" id="children" name="children" value="companion" onChange={this.handleChange} />
+              <input type="radio" id="children" name="children" value="both" onChange={this.handleChange} />
               <label htmlFor="children">I am alone</label>
             </Stack>
 
@@ -103,38 +103,44 @@ class QuizForm extends React.Component {
             <p>Describe your activity level</p>
 
             <Stack direction="horizontal" gap={2}>
-              <input type="radio" id="activity" name="activity" value="lapdog" onChange={this.handleChange} />
+              <input type="radio" id="activity" name="activity" value="inactive" onChange={this.handleChange} />
               <label htmlFor="activity">My couch and I are no longer seperate beings</label>
 
-              <input type="radio" id="activity" name="activity" value="lapdog" onChange={this.handleChange} />
+              <input type="radio" id="activity" name="activity" value="inactive" onChange={this.handleChange} />
               <label htmlFor="activity">I try to touch grass on the weekends</label>
 
-              <input type="radio" id="activity" name="activity" value="herding" onChange={this.handleChange} />
+              <input type="radio" id="activity" name="activity" value="active" onChange={this.handleChange} />
               <label htmlFor="activity">Kind of like the floor is lava but if you sit down you perish</label>
             </Stack>
 
             <br />
-            <p>Do you want a dog that can do a job?</p>
+            <p>What life stage suits you?</p>
 
             <Stack direction="horizontal" gap={3}>
-              <input type="radio" id="job" name="job" value="lapdog" onChange={this.handleChange} />
-              <label htmlFor="job">I don't want to work so I shouldn't expect my dog to</label>
+              <input type="radio" id="age" name="age" value="baby" onChange={this.handleChange} />
+              <label htmlFor="age">Puppy</label>
 
-              <input type="radio" id="job" name="job" value="herding" onChange={this.handleChange} />
-              <label htmlFor="job">My dog is going to pay my bills</label>
+              <input type="radio" id="age" name="age" value="young" onChange={this.handleChange} />
+              <label htmlFor="age">Young</label>
+
+              <input type="radio" id="age" name="age" value="adult" onChange={this.handleChange} />
+              <label htmlFor="age">Adult</label>
+
+              <input type="radio" id="age" name="age" value="senior" onChange={this.handleChange} />
+              <label htmlFor="age">Senior</label>
             </Stack>
 
             <br />
             <p>Have you ever had a dog?</p>
 
             <Stack direction="horizontal" gap={3}>
-              <input type="radio" id="experience" name="experience" value="trainable" onChange={this.handleChange} />
+              <input type="radio" id="experience" name="experience" value="inexperienced" onChange={this.handleChange} />
               <label htmlFor="experience">This is my first dog</label>
 
-              <input type="radio" id="experience" name="experience" value="trainable" onChange={this.handleChange} />
+              <input type="radio" id="experience" name="experience" value="inexperienced" onChange={this.handleChange} />
               <label htmlFor="experience">I have had one/a handful of dogs</label>
 
-              <input type="radio" id="experience" name="experience" value="stubborn" onChange={this.handleChange} />
+              <input type="radio" id="experience" name="experience" value="experienced" onChange={this.handleChange} />
               <label htmlFor="experience">I have never existed without a dog</label>
             </Stack>
             <button onClick={this.submitQuiz} >Show me my dog!</button>
